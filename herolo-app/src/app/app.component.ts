@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpRequestsService } from './http-requests.service';
+import { HttpRequestsService, IMovie } from './http-requests.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,13 @@ import { HttpRequestsService } from './http-requests.service';
 export class AppComponent implements OnInit {
 
   constructor(private httpService: HttpRequestsService) { }
-
+  movies: IMovie[];
   ngOnInit() {
-    this.httpService.getMovieList().subscribe( movies => console.log(movies));
+    this.httpService.getMovieList();
+    this.httpService.currentListSub$.subscribe(movies => {
+      this.movies = movies
+      console.log(this.movies)
+    })
   }
 
 }
