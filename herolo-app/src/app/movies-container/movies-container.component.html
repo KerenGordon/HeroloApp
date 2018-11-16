@@ -1,3 +1,5 @@
-<p>
-  movies-container works!
-</p>
+<div class="container">
+    <div *ngFor="let movie of movies">
+      <app-movie [movie]="movie"> </app-movie>
+    </div>
+  </div>

@@ -1,3 +1,27 @@
-<p>
-  movie works!
-</p>
+<div class="movie-container">
+  <div class="header"> 
+    <div class="title"> {{ movie.Title}} </div>
+    <span mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+      <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+    </span>
+  </div>
+      
+  <div class="content">
+    <div class="details">
+      <p> IMDB ID: {{ movie.imdbID }} </p>
+      <p> Year: {{ movie.Year}} </p>
+      <p> Runtime: {{ movie.Runtime}} </p>
+      <p> Genre: {{ movie.Genre}} </p>
+      <p> Director: {{ movie.Director}} </p>
+    </div>
+    <img src="{{movie.Poster}}" alt="">
+  </div>
+</div>

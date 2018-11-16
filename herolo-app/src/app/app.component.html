@@ -1,12 +1,1 @@
-<div>
-  <div *ngFor="let movie of movies">
-    <p> id: {{ movie.imdbId }} </p>
-    <p> title: {{ movie.Title}} </p>
-    <p> year: {{ movie.Year}} </p>
-    <p> runtime: {{ movie.Runtime}} </p>
-    <p> genre: {{ movie.Genre}} </p>
-    <p> director: {{ movie.Director}} </p>
-    <img src="{{movie.Poster}}" alt="">
-
-  </div>
-</div>
+<app-movies-container [movies]="movies"> </app-movies-container>

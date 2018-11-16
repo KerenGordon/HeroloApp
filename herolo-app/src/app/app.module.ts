@@ -6,17 +6,33 @@ import { MoviesContainerComponent } from './movies-container/movies-container.co
 import { ActionModalComponent } from './action-modal/action-modal.component';
 import { MovieComponent } from './movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EditComponent } from './movie/edit/edit.component';
+import { AddNewComponent } from './movie/add-new/add-new.component';
+import { reducer } from './state/reducers/movies.reducer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatMenuModule, MatIconModule} from '@angular/material';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesContainerComponent,
     ActionModalComponent,
-    MovieComponent
+    MovieComponent,
+    EditComponent,
+    AddNewComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({
+      movies: reducer
+    }),
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

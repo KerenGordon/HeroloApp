@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-movies-container',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movies-container.component.scss']
 })
 export class MoviesContainerComponent implements OnInit {
-
+  @Input() movies;
   constructor() { }
 
   ngOnInit() {

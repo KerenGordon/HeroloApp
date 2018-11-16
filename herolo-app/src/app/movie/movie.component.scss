@@ -1,0 +1,36 @@
+.movie-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  border-radius: 5px;
+  justify-content: space-between;
+  height: 30em;
+  margin: 1em 0;
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 3em;
+    .title {
+      text-align: center;
+    }
+  }
+  .content {
+    display: flex;
+    position: relative;
+    .details {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      padding: 1em;
+      width: 12em;
+    }
+  }
+  img {
+    z-index: -1;
+    opacity: 0.2;
+    height: 27em;
+    width: 20em;
+  }
+}

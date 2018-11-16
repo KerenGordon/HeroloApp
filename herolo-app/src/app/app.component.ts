@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpRequestsService, IMovie } from './http-requests.service';
+import { Store } from '@ngrx/store';
+import { HttpRequestsService } from './services/http-requests.service';
+import { AppState } from './state/app.state';
+
 
 @Component({
   selector: 'app-root',
@@ -8,12 +11,15 @@ import { HttpRequestsService, IMovie } from './http-requests.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private httpService: HttpRequestsService) { }
-  movies: IMovie[];
+  movies;
+
+  constructor(private httpService: HttpRequestsService, private store: Store<AppState>) { }
+  
+  
   ngOnInit() {
     this.httpService.getMovieList();
-    this.httpService.currentListSub$.subscribe(movies => {
-      this.movies = movies
+    this.store.subscribe(state => {
+      this.movies = state.movies
       console.log(this.movies)
     })
   }
