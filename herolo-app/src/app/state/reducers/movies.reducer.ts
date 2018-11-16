@@ -9,6 +9,11 @@ export function reducer(state: IMovie[] = [], action: MoviesActions.Actions) {
             return [...state, action.payload];
         case MoviesActions.INIT_MOVIES:
             return [action.payload];
+        case MoviesActions.DELETE_MOVIE:
+            return state.filter(movie => {
+              console.log('movie', movie)
+              return movie.imdbID !== action.payload.imdbID;
+            })
         default:
             return state;
     }

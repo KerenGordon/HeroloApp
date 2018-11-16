@@ -11,7 +11,7 @@ import { EditComponent } from './movie/edit/edit.component';
 import { AddNewComponent } from './movie/add-new/add-new.component';
 import { reducer } from './state/reducers/movies.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatMenuModule, MatIconModule} from '@angular/material';
+import {MatMenuModule, MatIconModule, MatDialogModule, MatButtonModule} from '@angular/material';
 
 
 
@@ -32,8 +32,11 @@ import {MatMenuModule, MatIconModule} from '@angular/material';
     }),
     BrowserAnimationsModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule
   ],
+  entryComponents: [ActionModalComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
