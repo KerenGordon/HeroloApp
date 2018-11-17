@@ -20,17 +20,24 @@ export class HttpRequestsService {
   constructor(private http: HttpClient, private store: Store<AppState>) { }
 
 
-  getMovieList() {
+  getMovies() {
     this.http.get(tmdbUrl).subscribe(list => {
       if (list) {
         list['results'].forEach(movie => {
           let omdbUrl = `http://www.omdbapi.com/?t=${movie.title}&apikey=${API_KEY_OMDB}&`;
           this.http.get(omdbUrl).subscribe((movie: IMovie) => {
-            this.store.dispatch(new MoviesActions.AddMovie(movie))
+            this.store.dispatch(new MoviesActions.AddMovie(movie));
           });
         });
       }
     });
+  }
+  getMovieDetails(movieTitle) {
+    let omdbUrl = `http://www.omdbapi.com/?t=${movieTitle}&apikey=${API_KEY_OMDB}&`;
+
+    return this.http.get(omdbUrl);
+      // this.store.dispatch(new MoviesActions.AddMovie(movie));
+    // });
   }
 
 }

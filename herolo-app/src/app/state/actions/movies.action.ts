@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store'
 import { IMovie } from '../../model';
+import { CapitalizePipe } from './../../pipes/capitalize.pipe';
 
 export const ADD_MOVIE    = '[MOVIE] Add'
 export const DELETE_MOVIE    = '[MOVIE] Delete'

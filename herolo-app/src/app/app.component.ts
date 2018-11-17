@@ -17,10 +17,9 @@ export class AppComponent implements OnInit {
   
   
   ngOnInit() {
-    this.httpService.getMovieList();
+    this.httpService.getMovies();
     this.store.subscribe(state => {
       this.movies = state.movies
-      console.log(this.movies)
     })
   }
 

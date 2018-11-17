@@ -1,3 +1,47 @@
-<p>
-  edit works!
-</p>
+<div class="edit-container" *ngIf="form">
+	<div class="form" [formGroup]="form">
+		<mat-form-field>
+			<input formControlName="imdbID" matInput placeholder="ID">
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput formControlName="Title" [placeholder]="Title" (focusout)="checkIsUniqueName($event.target.value)">
+			<mat-error *ngIf="form.controls['Title'].hasError('required')">
+				Title is <strong>required.</strong>
+      </mat-error>
+      <mat-error *ngIf="form.controls['Title'].hasError('duplicate')">
+				This movie already exists!
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput formControlName="Year" type="number" placeholder="Year">
+			<mat-error *ngIf="form.controls['Year'].hasError('required')">
+				Year is <strong>required.</strong>
+      </mat-error>
+      <mat-error *ngIf="form.controls['Year'].hasError('min') || form.controls['Year'].hasError('max')">
+				Year must be between 1900-2018.
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput formControlName="Runtime" placeholder="Duration">
+			<mat-error *ngIf="form.controls['Runtime'].hasError('required')">
+				Duration is <strong>required.</strong>
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput formControlName="Genre" placeholder="Genre">
+			<mat-error *ngIf="form.controls['Genre'].hasError('required')">
+				Genre is <strong>required.</strong>
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput formControlName="Director" placeholder="Director">
+			<mat-error *ngIf="form.controls['Director'].hasError('required')">
+				Director is <strong>required.</strong>
+			</mat-error>
+		</mat-form-field>
+	</div>
+	<div mat-dialog-actions>
+			<button mat-button (click)="onNoClick()">Cancel</button>
+			<button mat-button [mat-dialog-close]="data" cdkFocusInitial> Save</button>
+		</div>
+</div>

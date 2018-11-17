@@ -1,6 +1,6 @@
 export interface IMovie {
   imdbID: string,
-  Title: string,
+  title: string,
   year: string,
   runtime: string,
   genre: string,

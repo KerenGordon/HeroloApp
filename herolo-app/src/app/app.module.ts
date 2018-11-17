@@ -11,8 +11,10 @@ import { EditComponent } from './movie/edit/edit.component';
 import { AddNewComponent } from './movie/add-new/add-new.component';
 import { reducer } from './state/reducers/movies.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatMenuModule, MatIconModule, MatDialogModule, MatButtonModule} from '@angular/material';
-import { UppercaseStringsPipe } from './pipes/uppercase-strings.pipe';
+import {MatMenuModule, MatIconModule, MatDialogModule, MatButtonModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 
 
@@ -24,7 +26,7 @@ import { UppercaseStringsPipe } from './pipes/uppercase-strings.pipe';
     MovieComponent,
     EditComponent,
     AddNewComponent,
-    UppercaseStringsPipe
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,
@@ -36,9 +38,13 @@ import { UppercaseStringsPipe } from './pipes/uppercase-strings.pipe';
     MatMenuModule,
     MatIconModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  entryComponents: [ActionModalComponent],
+  entryComponents: [ActionModalComponent, EditComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
