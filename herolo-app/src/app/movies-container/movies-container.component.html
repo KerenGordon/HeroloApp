@@ -1,7 +1,7 @@
 <div class="main-page">
   <div class="header"> 
     <h1 class="title"> {{'my favorite movies library' | Capitalize}}  </h1>
-    <button class="action" mat-button> <i class="material-icons"> add </i> </button>
+    <button class="action" mat-button (click)="addNewMovie()"> <i class="material-icons"> add </i> </button>
   </div> 
   <div class="container" >
     <app-movie *ngFor="let movie of movies" [movie]="movie"> </app-movie>

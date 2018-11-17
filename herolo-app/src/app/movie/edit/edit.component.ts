@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ActionModalComponent } from 'src/app/action-modal/action-modal.component';
 import { AppState } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
-import { IMovie } from './../../model';
+import { IMovie, UserActions } from './../../model';
 import { CapitalizePipe } from 'src/app/pipes/capitalize.pipe';
 
 @Component({
@@ -16,12 +16,13 @@ export class EditComponent implements OnInit {
   movieDetails: IMovie;
   movieNames = [];
   form;
+  title;
   constructor(public dialogRef: MatDialogRef<ActionModalComponent>, private store: Store<AppState>,
     private titlePipe: CapitalizePipe,
     @Inject(MAT_DIALOG_DATA) public data) { 
       this.movieDetails = data['movie'];
       this.form = data['form'];
-      console.log('this.form: ', this.form);
+      this.title = data['action'] === UserActions.new ? 'add new movie' : 'edit movie'
     }
     
     ngOnInit() {

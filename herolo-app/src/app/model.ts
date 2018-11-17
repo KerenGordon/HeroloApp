@@ -6,3 +6,8 @@ export interface IMovie {
   genre: string,
   director: string
 }
+
+export enum UserActions {
+  new,
+  edit
+}

@@ -44,7 +44,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  entryComponents: [ActionModalComponent, EditComponent],
+  entryComponents: [ActionModalComponent, EditComponent, AddNewComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

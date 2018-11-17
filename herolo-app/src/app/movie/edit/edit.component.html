@@ -1,10 +1,12 @@
 <div class="edit-container" *ngIf="form">
+  <div class="header"> {{ title | Capitalize }} </div>
 	<div class="form" [formGroup]="form">
 		<mat-form-field>
 			<input formControlName="imdbID" matInput placeholder="ID">
 		</mat-form-field>
 		<mat-form-field>
-			<input matInput formControlName="Title" [placeholder]="Title" (focusout)="checkIsUniqueName($event.target.value)">
+        <!-- <button *ngIf="form.controls['imdbID']" mat-button (click)="findMovie()">Find in IMDB</button> -->
+        <input matInput formControlName="Title" placeholder="Title" (focusout)="checkIsUniqueName($event.target.value)">
 			<mat-error *ngIf="form.controls['Title'].hasError('required')">
 				Title is <strong>required.</strong>
       </mat-error>
@@ -42,6 +44,6 @@
 	</div>
 	<div mat-dialog-actions>
 			<button mat-button (click)="onNoClick()">Cancel</button>
-			<button mat-button [mat-dialog-close]="data" cdkFocusInitial> Save</button>
+			<button mat-button [mat-dialog-close]="data" cdkFocusInitial [disabled]="!form.valid"> Save</button>
 		</div>
 </div>

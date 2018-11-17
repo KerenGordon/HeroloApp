@@ -7,12 +7,9 @@ import * as MoviesActions from './../state/actions/movies.action';
 import { EditComponent } from './edit/edit.component';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CapitalizePipe } from 'src/app/pipes/capitalize.pipe';
+import { UserActions } from '../model';
 
 
-const actionComps = {
-  delete: 'ActionModalComponent',
-  edit: 'EditComponent'
-}
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -52,9 +49,9 @@ export class MovieComponent implements OnInit {
   }
   openEditDialog(): void {
     const dialogRef = this.dialog.open(EditComponent, {
-      width: '400px',
-      height: '600px',
-      data: {movie: this.movie, form: this.form}
+      width: '350px',
+      height: '550px',
+      data: {movie: this.movie, form: this.form, action: UserActions.edit}
     });
     dialogRef.afterClosed().subscribe(result => {
       let payload = this.form.value;
