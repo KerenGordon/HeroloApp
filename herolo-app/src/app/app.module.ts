@@ -12,6 +12,7 @@ import { AddNewComponent } from './movie/add-new/add-new.component';
 import { reducer } from './state/reducers/movies.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule, MatIconModule, MatDialogModule, MatButtonModule} from '@angular/material';
+import { UppercaseStringsPipe } from './pipes/uppercase-strings.pipe';
 
 
 
@@ -22,7 +23,8 @@ import {MatMenuModule, MatIconModule, MatDialogModule, MatButtonModule} from '@a
     ActionModalComponent,
     MovieComponent,
     EditComponent,
-    AddNewComponent
+    AddNewComponent,
+    UppercaseStringsPipe
   ],
   imports: [
     BrowserModule,
