@@ -8,7 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './state/reducers/movies.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatMenuModule, MatIconModule, MatDialogModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSnackBarModule} from '@angular/material';
+import {MatMenuModule, MatIconModule, MatDialogModule, MatButtonModule,
+        MatInputModule, MatFormFieldModule, MatSnackBarModule} from '@angular/material';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ActionModalComponent } from './user-actions/action-modal/action-modal.component';

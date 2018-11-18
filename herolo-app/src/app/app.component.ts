@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.httpService.getMovies();
     this.store.subscribe(state => {
-      this.movies = state.movies
+      this.movies = state.movies;
     })
   }
 
