@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MoviesContainerComponent } from './movies-container/movies-container.component';
-import { ActionModalComponent } from './action-modal/action-modal.component';
 import { MovieComponent } from './movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { EditComponent } from './movie/edit/edit.component';
-import { AddNewComponent } from './movie/add-new/add-new.component';
 import { reducer } from './state/reducers/movies.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatMenuModule, MatIconModule, MatDialogModule, MatButtonModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import {MatMenuModule, MatIconModule, MatDialogModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSnackBarModule} from '@angular/material';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ActionModalComponent } from './user-actions/action-modal/action-modal.component';
+import { VerifyModalComponent } from './user-actions/verify-modal/verify-modal.component';
+import { OnlyNumberDirective } from './directives/only-number.directive';
 
 
 
@@ -24,9 +24,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MoviesContainerComponent,
     ActionModalComponent,
     MovieComponent,
-    EditComponent,
-    AddNewComponent,
-    CapitalizePipe
+    VerifyModalComponent,
+    CapitalizePipe,
+    OnlyNumberDirective,
   ],
   imports: [
     BrowserModule,
@@ -42,9 +42,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
   ],
-  entryComponents: [ActionModalComponent, EditComponent, AddNewComponent],
+  entryComponents: [ActionModalComponent, VerifyModalComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

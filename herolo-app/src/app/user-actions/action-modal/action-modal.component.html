@@ -1,12 +1,11 @@
 <div class="edit-container" *ngIf="form">
-  <div class="header"> {{ title | Capitalize }} </div>
+  <div mat-dialog-title class="header header-color"> {{ title | Capitalize }} </div>
 	<div class="form" [formGroup]="form">
 		<mat-form-field>
 			<input formControlName="imdbID" matInput placeholder="ID">
 		</mat-form-field>
 		<mat-form-field>
-        <!-- <button *ngIf="form.controls['imdbID']" mat-button (click)="findMovie()">Find in IMDB</button> -->
-        <input matInput formControlName="Title" placeholder="Title" (focusout)="checkIsUniqueName($event.target.value)">
+      <input matInput formControlName="Title" placeholder="Title" (focusout)="checkIsUniqueName($event.target.value)">
 			<mat-error *ngIf="form.controls['Title'].hasError('required')">
 				Title is <strong>required.</strong>
       </mat-error>
@@ -15,12 +14,12 @@
 			</mat-error>
 		</mat-form-field>
 		<mat-form-field>
-			<input matInput formControlName="Year" type="number" placeholder="Year">
+			<input matInput formControlName="Year" only-number placeholder="Year">
 			<mat-error *ngIf="form.controls['Year'].hasError('required')">
 				Year is <strong>required.</strong>
       </mat-error>
       <mat-error *ngIf="form.controls['Year'].hasError('min') || form.controls['Year'].hasError('max')">
-				Year must be between 1900-2018.
+				Year must be a number between 1900-2018.
 			</mat-error>
 		</mat-form-field>
 		<mat-form-field>
@@ -43,7 +42,7 @@
 		</mat-form-field>
 	</div>
 	<div mat-dialog-actions>
-			<button mat-button (click)="onNoClick()">Cancel</button>
-			<button mat-button [mat-dialog-close]="data" cdkFocusInitial [disabled]="!form.valid"> Save</button>
-		</div>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial [disabled]="!form.valid"> Save</button>
+  </div>
 </div>

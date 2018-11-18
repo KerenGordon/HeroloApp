@@ -1,18 +1,17 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ActionModalComponent } from 'src/app/action-modal/action-modal.component';
 import { AppState } from 'src/app/state/app.state';
 import { Store } from '@ngrx/store';
 import { IMovie, UserActions } from './../../model';
 import { CapitalizePipe } from 'src/app/pipes/capitalize.pipe';
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss'],
+  selector: 'app-action-modal',
+  templateUrl: './action-modal.component.html',
+  styleUrls: ['./action-modal.component.scss'],
   providers: [CapitalizePipe]
 })
-export class EditComponent implements OnInit {
+export class ActionModalComponent implements OnInit {
   movieDetails: IMovie;
   movieNames = [];
   form;
@@ -42,8 +41,10 @@ export class EditComponent implements OnInit {
     checkIsUniqueName(name) {
       name = this.titlePipe.transform(name);
       if (this.movieNames.filter(movieName => movieName === name).length > 0 && name !== this.movieDetails['Title'] ) {
-        this.form.get('title').setErrors({duplicate : true});
-      };
+        this.form.get('Title').setErrors({duplicate : true});
+      } else {
+        this.form.get('Title').setValue(this.titlePipe.transform(name));
+      }
     }
 
     onNoClick(): void {
@@ -51,4 +52,3 @@ export class EditComponent implements OnInit {
     }
     
   }
-  

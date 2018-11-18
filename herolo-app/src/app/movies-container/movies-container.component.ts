@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CapitalizePipe } from './../pipes/capitalize.pipe';
 import { Store } from '@ngrx/store';
 import { AppState } from '../state/app.state';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { FormBuilder, Validators } from '@angular/forms';
-import { EditComponent } from '../movie/edit/edit.component';
 import * as MoviesActions from './../state/actions/movies.action';
 import { UserActions } from '../model';
+import { ActionModalComponent } from '../user-actions/action-modal/action-modal.component';
 
 @Component({
   selector: 'app-movies-container',
@@ -17,7 +17,8 @@ import { UserActions } from '../model';
 export class MoviesContainerComponent implements OnInit {
   @Input() movies;
   form;
-  constructor(private store: Store<AppState>, private dialog: MatDialog, private _fb: FormBuilder, private capitalize: CapitalizePipe) { }
+  constructor(private store: Store<AppState>, private dialog: MatDialog, 
+    private _fb: FormBuilder, private snackBar: MatSnackBar) { }
   
   ngOnInit() {
   }
@@ -35,15 +36,17 @@ export class MoviesContainerComponent implements OnInit {
   
   addNewMovie(): void {
     this.buildForm();
-    const dialogRef = this.dialog.open(EditComponent, {
+    const dialogRef = this.dialog.open(ActionModalComponent, {
       width: '350px',
       height: '550px',
       data: {movie: null, form: this.form, action: UserActions.new}
     });
     dialogRef.afterClosed().subscribe(result => {
       let payload = this.form.value;
-      payload['Title'] = this.capitalize.transform(this.form.get('Title').value);
-      if (result) this.store.dispatch(new MoviesActions.AddMovie(payload))
+      if (result) {
+        this.store.dispatch(new MoviesActions.AddMovie(payload))
+        this.snackBar.open('Movie is added successfully', null, { duration: 2000 });
+      };
     });
   }
 

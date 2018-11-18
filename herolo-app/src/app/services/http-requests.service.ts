@@ -32,12 +32,5 @@ export class HttpRequestsService {
       }
     });
   }
-  getMovieDetails(movieTitle) {
-    let omdbUrl = `http://www.omdbapi.com/?t=${movieTitle}&apikey=${API_KEY_OMDB}&`;
-
-    return this.http.get(omdbUrl);
-      // this.store.dispatch(new MoviesActions.AddMovie(movie));
-    // });
-  }
 
 }
