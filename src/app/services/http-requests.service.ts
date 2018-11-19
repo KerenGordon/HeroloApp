@@ -24,7 +24,7 @@ export class HttpRequestsService {
     this.http.get(tmdbUrl).subscribe(list => {
       if (list) {
         list['results'].forEach(movie => {
-          const omdbUrl = `http://www.omdbapi.com/?t=${movie.title}&apikey=${API_KEY_OMDB}&`;
+          const omdbUrl = `https://www.omdbapi.com/?t=${movie.title}&apikey=${API_KEY_OMDB}&`;
           this.http.get(omdbUrl).subscribe((movieDetails: IMovie) => {
             this.store.dispatch(new MoviesActions.AddMovie(movieDetails));
           });
