@@ -30,7 +30,7 @@ export class ActionModalComponent implements OnInit {
 
     
     getMovieNames() {
-      let moviesSub$ = this.store.select('movies').subscribe(movies => {
+      const moviesSub$ = this.store.select('movies').subscribe(movies => {
         movies.forEach((movie: IMovie) => {
           this.movieNames.push(movie['Title']);
         });

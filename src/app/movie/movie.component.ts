@@ -58,7 +58,7 @@ export class MovieComponent implements OnInit {
         data: {movie: this.movie, form: this.form, action: UserActions.edit}
       });
       dialogRef.afterClosed().subscribe(result => {
-        let payload = this.form.value;
+        const payload = this.form.value;
         payload['imdbID'] = this.form.get('imdbID').value;
         if (result) {
           this.store.dispatch(new MoviesActions.EditMovie(payload));
